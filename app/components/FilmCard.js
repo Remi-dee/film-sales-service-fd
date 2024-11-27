@@ -63,13 +63,13 @@ export function FilmCard({ film, onDelete, onEdit }) {
     <li className="p-4 border rounded shadow hover:bg-gray-100">
       <div className="flex justify-between">
         <div>
-          <Image
+          {/* <Image
             src={imageUrl}
             alt={film.title}
             width={0}
             height={0}
             className="w-full h-40 object-cover rounded mb-2"
-          />
+          /> */}
           <h3 className="text-xl font-bold">{film.title}</h3>
           <p className="text-gray-700">{film.description}</p>
           <p className="text-sm text-gray-600">Genre: {film.genre}</p>
