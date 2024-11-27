@@ -12,9 +12,11 @@ export default function Purchases() {
 
   const fetchPurchases = async () => {
     setLoading(true);
+    let token = null;
+    let userId = null;
     if (typeof window !== "undefined") {
-      const token = localStorage.getItem("authToken");
-      const userId = localStorage.getItem("userId");
+      token = localStorage.getItem("authToken");
+      userId = localStorage.getItem("userId");
     }
 
     try {

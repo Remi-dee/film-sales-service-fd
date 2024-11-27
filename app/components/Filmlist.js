@@ -21,11 +21,12 @@ export default function FilmList() {
 
   const fetchFilms = async () => {
     setLoading(true);
-    try {
-      if (typeof window !== "undefined") {
-        const token = localStorage.getItem("authToken");
-      }
+    let token = null;
 
+    if (typeof window !== "undefined") {
+      token = localStorage.getItem("authToken");
+    }
+    try {
       const response = await fetch("http://localhost:4000/films", {
         headers: {
           Authorization: `Bearer ${token}`,

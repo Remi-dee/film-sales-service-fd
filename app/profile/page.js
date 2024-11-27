@@ -22,9 +22,12 @@ export default function Profile() {
   }, []);
 
   const fetchUserDetails = async () => {
+    let token = null;
+    let userId = null;
+
     if (typeof window !== "undefined") {
-      const token = localStorage.getItem("authToken");
-      const userId = localStorage.getItem("userId");
+      token = localStorage.getItem("authToken");
+      userId = localStorage.getItem("userId");
     }
 
     console.log("here is user", userId);
