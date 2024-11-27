@@ -20,10 +20,13 @@ export default function RegisterAdmin() {
     setError(null);
 
     try {
-      await axios.post("http://localhost:4000/auth/register", {
-        ...form,
-        role: "admin",
-      });
+      await axios.post(
+        "https://film-sales-service-bd.onrender.com/auth/register",
+        {
+          ...form,
+          role: "admin",
+        }
+      );
       alert("Admin registered successfully!");
       router.push("/login");
     } catch (error) {

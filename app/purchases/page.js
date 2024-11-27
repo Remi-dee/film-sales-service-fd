@@ -21,7 +21,7 @@ export default function Purchases() {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/purchases/${userId}`,
+        `https://film-sales-service-bd.onrender.com/purchases/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

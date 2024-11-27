@@ -12,10 +12,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/auth/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://film-sales-service-bd.onrender.com/auth/login",
+        {
+          email,
+          password,
+        }
+      );
 
       const token = response.data.accessToken;
       console.log("reponse token", response.data.accessToken);

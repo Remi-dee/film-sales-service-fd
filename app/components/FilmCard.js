@@ -17,7 +17,7 @@ export function FilmCard({ film, onDelete, onEdit }) {
     const token = localStorage.getItem("authToken");
 
     try {
-      const response = await fetch(`http://localhost:4000/films/${film._id}`, {
+      const response = await fetch(`https://film-sales-service-bd.onrender.com/films/${film._id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ export function FilmCard({ film, onDelete, onEdit }) {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/purchases/${film._id}`,
+        `https://film-sales-service-bd.onrender.com/purchases/${film._id}`,
         {
           method: "POST",
           headers: {

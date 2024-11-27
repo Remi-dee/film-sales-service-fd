@@ -33,11 +33,14 @@ export default function FilmList() {
       token = localStorage.getItem("authToken");
     }
     try {
-      const response = await fetch("http://localhost:4000/films", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://film-sales-service-bd.onrender.com/films",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const data = await response.json();
       setFilms(data);
     } catch (error) {
@@ -51,14 +54,17 @@ export default function FilmList() {
     e.preventDefault();
     const token = localStorage.getItem("authToken");
     try {
-      const response = await fetch("http://localhost:4000/films", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newFilm),
-      });
+      const response = await fetch(
+        "https://film-sales-service-bd.onrender.com/films",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(newFilm),
+        }
+      );
       if (response.ok) {
         setNewFilm({
           title: "",
@@ -80,7 +86,7 @@ export default function FilmList() {
     const token = localStorage.getItem("authToken");
     try {
       const response = await fetch(
-        `http://localhost:4000/films/${updatedFilm._id}`,
+        `https://film-sales-service-bd.onrender.com/films/${updatedFilm._id}`,
         {
           method: "PUT",
           headers: {

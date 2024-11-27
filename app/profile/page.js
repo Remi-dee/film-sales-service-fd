@@ -33,7 +33,7 @@ export default function Profile() {
     console.log("here is user", userId);
     try {
       const response = await axios.get(
-        `http://localhost:4000/customers/${userId}`,
+        `https://film-sales-service-bd.onrender.com/customers/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -65,7 +65,7 @@ export default function Profile() {
       setLoading(true);
       setError("");
       const response = await axios.patch(
-        `http://localhost:4000/customers/${userId}`,
+        `https://film-sales-service-bd.onrender.com/customers/${userId}`,
         form,
         {
           headers: {

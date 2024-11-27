@@ -15,11 +15,14 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/auth/register", {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://film-sales-service-bd.onrender.com/auth/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
 
       console.log("reponse is");
       alert("Registered:", response);
