@@ -1,5 +1,14 @@
+import Image from "next/image";
+
 export function FilmCard({ film, onDelete, onEdit }) {
   const role = localStorage.getItem("userRole");
+  const placeholderImages = [
+    "https://unsplash.com/photos/a-close-up-of-a-person-with-frecky-hair-wtAC4c_Hj-g",
+    "https://unsplash.com/photos/a-close-up-of-a-person-with-frecky-hair-wtAC4c_Hj-g",
+  ];
+
+  // Assign a random image from the placeholder list
+  const imageUrl = placeholderImages[film._id % placeholderImages.length];
   const handleDelete = async () => {
     const token = localStorage.getItem("authToken");
 
@@ -50,6 +59,15 @@ export function FilmCard({ film, onDelete, onEdit }) {
     <li className="p-4 border rounded shadow hover:bg-gray-100">
       <div className="flex justify-between">
         <div>
+          <Image
+            src={
+              "https://unsplash.com/photos/a-close-up-of-a-person-with-frecky-hair-wtAC4c_Hj-g"
+            }
+            alt={film.title}
+            width={300}
+            height={150}
+            className="w-full h-40 object-cover rounded mb-2"
+          />
           <h3 className="text-xl font-bold">{film.title}</h3>
           <p className="text-gray-700">{film.description}</p>
           <p className="text-sm text-gray-600">Genre: {film.genre}</p>
