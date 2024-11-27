@@ -1,18 +1,26 @@
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function ProtectedRoute({ children }) {
   const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Ensure this code runs only in the browser
-    if (typeof window !== "undefined") {
+    // Mark as client-only
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient) {
       const token = localStorage.getItem("authToken");
       if (!token) {
         router.push("/login"); // Redirect to login if not authenticated
       }
     }
-  }, [router]);
+  }, [isClient, router]);
+
+  // Render nothing until client-side rendering is confirmed
+  if (!isClient) return null;
 
   return <>{children}</>;
 }
