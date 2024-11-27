@@ -5,9 +5,12 @@ export default function ProtectedRoute({ children }) {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    if (!token) {
-      router.push("/login"); // Redirect to login if not authenticated
+    // Ensure this code runs only in the browser
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        router.push("/login"); // Redirect to login if not authenticated
+      }
     }
   }, [router]);
 
