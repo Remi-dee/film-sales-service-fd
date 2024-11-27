@@ -13,11 +13,19 @@ export default function FilmList() {
     releaseDate: "",
   });
   const [editingFilm, setEditingFilm] = useState(null);
-  const role = localStorage.getItem("userRole");
+
+  const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
+    // Check if window is defined (client-side)
+    if (typeof window !== "undefined") {
+      const role = localStorage.getItem("userRole");
+      setUserRole(role);
+    }
     fetchFilms();
   }, []);
+
+  
 
   const fetchFilms = async () => {
     setLoading(true);
@@ -101,7 +109,7 @@ export default function FilmList() {
     <div className="mt-4">
       <h2 className="text-2xl font-bold mb-4">Films</h2>
       {/* Create Film Form */}
-      {role === "admin" && (
+      {userRole === "admin" && (
         <form onSubmit={handleCreateFilm} className="mb-6">
           <input
             type="text"
