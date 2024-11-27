@@ -66,8 +66,8 @@ export function FilmCard({ film, onDelete, onEdit }) {
           <Image
             src={imageUrl}
             alt={film.title}
-            width={300}
-            height={150}
+            width={0}
+            height={0}
             className="w-full h-40 object-cover rounded mb-2"
           />
           <h3 className="text-xl font-bold">{film.title}</h3>
