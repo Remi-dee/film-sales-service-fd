@@ -22,7 +22,10 @@ export default function FilmList() {
   const fetchFilms = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem("authToken");
+      if (typeof window !== "undefined") {
+        const token = localStorage.getItem("authToken");
+      }
+
       const response = await fetch("http://localhost:4000/films", {
         headers: {
           Authorization: `Bearer ${token}`,
