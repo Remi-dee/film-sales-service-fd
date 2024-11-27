@@ -25,8 +25,6 @@ export default function FilmList() {
     fetchFilms();
   }, []);
 
-  
-
   const fetchFilms = async () => {
     setLoading(true);
     let token = null;
@@ -107,7 +105,19 @@ export default function FilmList() {
 
   return (
     <div className="mt-4">
-      <h2 className="text-2xl font-bold mb-4">Films</h2>
+      {userRole === "admin" ? (
+        <div>
+          <h2 className="text-2xl font-bold mb-4">Admin Film Dasboard</h2>
+          <h2 className="text-xl font-bold mb-4">Create Film</h2>
+        </div>
+      ) : (
+        <div>
+          <h2 className="text-2xl font-bold mb-4">
+            Welcome to Film sales, please explore varieties of movies of your
+            choice
+          </h2>
+        </div>
+      )}{" "}
       {/* Create Film Form */}
       {userRole === "admin" && (
         <form onSubmit={handleCreateFilm} className="mb-6">
@@ -162,7 +172,6 @@ export default function FilmList() {
           </button>
         </form>
       )}
-
       {/* Film List */}
       <ul className="space-y-2">
         {films.map((film) => (
