@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const router = useRouter();
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = async (e) => {
@@ -33,6 +34,7 @@ const Register = () => {
       } else {
         alert("Registeration failed");
       }
+
       // Handle success (redirect, etc.)
     } catch (err) {
       setError("Registration failed");
