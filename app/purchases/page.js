@@ -53,24 +53,24 @@ export default function Purchases() {
           <ul className="space-y-4">
             {purchases.map((purchase) => (
               <li
-                key={purchase._id}
+                key={purchase?._id}
                 className="bg-gray-50 border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200"
               >
                 <div className="flex justify-between items-center mb-2">
                   <h2 className="text-xl font-semibold text-gray-800">
-                    {purchase.filmId.title}
+                    {purchase?.filmId?.title}
                   </h2>
                   <span className="text-sm text-gray-500">
-                    {new Date(purchase.purchaseDate).toLocaleDateString()}
+                    {new Date(purchase?.purchaseDate).toLocaleDateString()}
                   </span>
                 </div>
                 <div className="text-gray-700">
                   <p>
-                    <strong>Price:</strong> ${purchase.price}
+                    <strong>Price:</strong> ${purchase?.price}
                   </p>
                   <p>
                     <strong>Purchased on:</strong>{" "}
-                    {new Date(purchase.purchaseDate).toLocaleDateString()}
+                    {new Date(purchase?.purchaseDate).toLocaleDateString()}
                   </p>
                 </div>
               </li>
