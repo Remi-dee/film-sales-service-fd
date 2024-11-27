@@ -1,14 +1,18 @@
 import Image from "next/image";
-
+import { Avengers } from "../../public/asset/captain-comedy.jpg";
+import { JusticeLeague } from "../../public/asset/justice-league.jpg";
+import { Person } from "../../public/asset/person-unsplash.jpg";
 export function FilmCard({ film, onDelete, onEdit }) {
   const role = localStorage.getItem("userRole");
   const placeholderImages = [
-    "https://unsplash.com/photos/a-close-up-of-a-person-with-frecky-hair-wtAC4c_Hj-g",
-    "https://unsplash.com/photos/a-close-up-of-a-person-with-frecky-hair-wtAC4c_Hj-g",
+    "/asset/captain-comedy.jpg",
+    "/asset/justice-league.jpg",
+    "/asset/person-unsplash.jpg",
   ];
 
   // Assign a random image from the placeholder list
   const imageUrl = placeholderImages[film._id % placeholderImages.length];
+
   const handleDelete = async () => {
     const token = localStorage.getItem("authToken");
 
@@ -60,9 +64,7 @@ export function FilmCard({ film, onDelete, onEdit }) {
       <div className="flex justify-between">
         <div>
           <Image
-            src={
-              "https://unsplash.com/photos/a-close-up-of-a-person-with-frecky-hair-wtAC4c_Hj-g"
-            }
+            src={imageUrl}
             alt={film.title}
             width={300}
             height={150}
