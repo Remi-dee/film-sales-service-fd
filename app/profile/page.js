@@ -22,8 +22,11 @@ export default function Profile() {
   }, []);
 
   const fetchUserDetails = async () => {
-    const token = localStorage.getItem("authToken");
-    const userId = localStorage.getItem("userId");
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("authToken");
+      const userId = localStorage.getItem("userId");
+    }
+
     console.log("here is user", userId);
     try {
       const response = await axios.get(

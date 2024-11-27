@@ -12,8 +12,11 @@ export default function Purchases() {
 
   const fetchPurchases = async () => {
     setLoading(true);
-    const token = localStorage.getItem("authToken");
-    const userId = localStorage.getItem("userId"); // Assume userId is stored in localStorage
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("authToken");
+      const userId = localStorage.getItem("userId");
+    }
+
     try {
       const response = await fetch(
         `http://localhost:4000/purchases/${userId}`,
